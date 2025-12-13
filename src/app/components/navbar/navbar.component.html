@@ -1,0 +1,44 @@
+<header>
+
+    <nav class="nav_menu" [class.open]="menuOpen">
+        <a (click)="goTo('/'); toggleMenu()" [class.active]="activeRoute === '/'">
+            Inicio
+        </a>
+        <a (click)="goTo('/us'); toggleMenu()" [class.active]="activeRoute === '/us'">
+            Quiénes somos
+        </a>
+        <a (click)="goTo('/carta'); toggleMenu()"
+           [class.active]="activeRoute.startsWith('/carta') || activeRoute.startsWith('/item')">
+            Nuestra carta
+        </a>
+        <a (click)="goTo('/book'); toggleMenu()"
+           [class.active]="activeRoute.startsWith('/book') || activeRoute.startsWith('/confirm')">
+            Reservas
+        </a>
+    </nav>
+
+    
+    <nav class="nav_icon">
+    
+        <div class="title">
+            <h1 class="title_h1"><i>La casa napolitana</i></h1>
+        </div>
+
+        
+        <div class="icons">
+
+            <div class="theme" (click)="toggleTheme()">
+                <img src="img/sun.svg" *ngIf="darkMode" alt="Sol" class="theme-icon" width="30" />
+                <img src="img/moon.svg" *ngIf="!darkMode" alt="Luna" class="theme-icon" width="30" />
+            </div>
+
+            <div class="menu-toggle" (click)="toggleMenu()">
+                <img src="img/menu.svg" *ngIf="!menuOpen" class="theme-icon" alt="Menú" width="30">
+                <img src="img/close.svg" *ngIf="menuOpen" class="theme-icon" alt="Menú" width="30">
+            </div>
+
+        </div>
+    </nav>
+
+</header>
+
