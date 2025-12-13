@@ -374,21 +374,26 @@ h1 {
         width: 100%;
     }
 
+    .datos_home {
+        width: 100%;
+    }
+
     .datos-div {
         font-size: 0.8em;
         gap: 0.5em;
+        width: 100%;
     }
 
     .datos-div i {
-        margin-top: 7%;
-    }
-
-    .datos-div h3 {
         margin-top: 5%;
     }
 
+    .datos-div h3 {
+        margin-top: 4%;
+    }
+
     iframe {
-        margin-left: 4%;
-        width: 250px;
+        margin: 0 auto;
+        width: 270px;
     }
 }
