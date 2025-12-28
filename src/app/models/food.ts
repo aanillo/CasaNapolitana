@@ -4,5 +4,6 @@ export interface Food {
     categoria: 'pizza' | 'pasta' | 'entrante' | 'postre';
     foto: string,
     descripcion: string,
-    ingredientes: string
+    ingredientes: string,
+    precio: string
 }
