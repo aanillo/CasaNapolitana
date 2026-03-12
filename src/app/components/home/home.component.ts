@@ -1,42 +1,22 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit, OnDestroy {
+  @ViewChild('carouselTrack') carouselTrack!: ElementRef;
+  
+  currentSlide: number = 0;
+  totalSlides: number = 3;
+  private intervalId: any;
 
-  @ViewChild('carouselTrack') carouselTrack!: ElementRef<HTMLDivElement>;
+  constructor(private router: Router) {}
 
-  currentIndex = 0;
-  totalSlides = 3;
-  intervalId: any;
-
-  constructor(private router: Router) {
-
-  }
-
-  ngAfterViewInit(): void {
-    this.startCarousel();
-
-    window.addEventListener('resize', () => {
-      this.updateTransform();
-    });
-  }
-
-  startCarousel() {
-    this.intervalId = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
-      this.updateTransform();
-    }, 5000);
-  }
-
-  updateTransform() {
-    const track = this.carouselTrack.nativeElement;
-    track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+  ngOnInit() {
+    this.startAutoPlay();
   }
 
   ngOnDestroy() {
@@ -45,6 +25,41 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
+  startAutoPlay() {
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+    this.updateCarousel();
+  }
+
+  prevSlide() {
+    this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+    this.updateCarousel();
+  }
+
+  goToSlide(index: number) {
+    this.currentSlide = index;
+    this.updateCarousel();
+    this.resetAutoPlay();
+  }
+
+  private updateCarousel() {
+    if (this.carouselTrack) {
+      const track = this.carouselTrack.nativeElement;
+      track.style.transform = `translateX(-${this.currentSlide * 33.333}%)`;
+    }
+  }
+
+  private resetAutoPlay() {
+    clearInterval(this.intervalId);
+    this.startAutoPlay();
+  }
+
+  
   goToCarta() {
     this.router.navigate(['/carta']);
   }

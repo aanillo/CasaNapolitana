@@ -4,81 +4,151 @@
     </div>
     <div>
         <h1><i>La casa napolitana</i></h1>
-        <h2>La mejor cocina italiana</h2>
+        <h2>La mejor cocina italiana en Cádiz</h2>
     </div>
     <div>
         <img src="img/pizza.png" alt="bandera" width="100">
     </div>
 </div>
-<div class="menu">
-    <div class="info">
-        <div class="carousel-track" #carouselTrack>
-            <picture><img src="img/cocina.jpg" alt="cocina" width="100%" height="80%"></picture>
-            <picture><img src="img/horno.jpg" alt="cocina" width="100%" height="80%"></picture>
-            <picture><img src="img/cocina2.jpg" alt="cocina" width="100%" height="80%"></picture>
-        </div>
-    </div>
-    <div class="inicio">
-        <div class="div-foto1">
-            <h3><i>Cocina napolitana</i></h3>
-            <p><i>Elaborada en horno de leña, ideal para los amantes de la pasta y la pizza</i></p>
-            <img src="img/napoles.jpg" alt="pasta" width="250">
-        </div>
-        <div class="menu">
-            <div class="carta_reserva">
-                <div class="texto">
-                    <h3>Consulta nuestra carta y los platos más populares</h3><br>
-                    <a class="enlace">
-                        <i class="fas fa-utensils"></i>  
-                        <button (click)="goToCarta()" class="btnSelected"><strong>Carta</strong></button>
-                    </a>
-                </div>
-                <img src="img/pasta.jpg" alt="pasta" width="400">
-            </div>
-            <div class="carta_reserva">
-                <img src="img/restaurante.jpg" alt="pasta" width="400">
-                <div class="texto2">
-                    <h3>Reserva y disfruta de una increíble experiencia</h3><br>
-                    <a class="enlace">
-                        <i class="fas fa-calendar-alt"></i>  
-                        <button (click)="goToReserva()" class="btnSelected"><strong>Reserva</strong></button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="div-foto2">
-            <h3><i>Con acento gaditano</i></h3>
-            <p><i>Desde el corazón de Cádiz, con alma andaluza</i></p>
-            <img src="img/cadiz.jpg" alt="pasta" width="250">
-        </div>
-    </div>
 
 
-    <div class="info2">
-       <div class="datos_home">
-            <div class="datos-div">
-                <i class="fas fa-map-marker-alt"></i>
-                <h3 class="subtitle">Localidad: </h3>
-                <p>Cádiz</p>
-            </div>
-            <div class="datos-div">
-                <i class="fas fa-road"></i>
-                <h3 class="subtitle">Dirección: </h3>
-                <p>Calle Torre, nº 5</p>
-            </div>
-            <div class="datos-div">
-                <i class="fas fa-envelope"></i>
-                <h3 class="subtitle">Correo: </h3>
-                <p>casanapolitana&#64;rrhh.com</p>
-            </div>
-            <div class="datos-div">
-                <i class="fas fa-phone"></i>
-                <h3 class="subtitle">Teléfono: </h3>
-                <p>956223344</p>
-            </div>
+<section class="seccion-carrusel">
+    <div class="carrusel-container">
+        <div class="carrusel-track" #carouselTrack>
+            <picture class="carrusel-slide">
+                <img src="img/cocina.jpg" alt="cocina napolitana">
+                <div class="carrusel-texto">
+                    <h2>Tradición napolitana</h2>
+                    <h3>Recetas auténticas transmitidas por generaciones</h3>
+                </div>
+            </picture>
+            <picture class="carrusel-slide">
+                <img src="img/horno.jpg" alt="horno de leña">
+                <div class="carrusel-texto">
+                    <h2>Horno de leña</h2>
+                    <h3>El auténtico sabor de la pizza napolitana</h3>
+                </div>
+            </picture>
+            <picture class="carrusel-slide">
+                <img src="img/cocina2.jpg" alt="ambiente restaurante">
+                <div class="carrusel-texto">
+                    <h2>Ambiente acogedor</h2>
+                    <h3>Disfruta de una experiencia gastronómica única</h3>
+                </div>
+            </picture>
         </div>
-        <div class="frame">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3205.8200386011986!2d-6.299244800000011!3d36.534335799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd160d0747419%3A0xbaeb4d5a3607d3cc!2sC.%20Torre%2C%2011003%20C%C3%A1diz!5e0!3m2!1ses!2ses!4v1765619637149!5m2!1ses!2ses" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <div class="carrusel-controls">
+            <button class="carrusel-btn anterior" (click)="prevSlide()">❮</button>
+            <button class="carrusel-btn siguiente" (click)="nextSlide()">❯</button>
+        </div>
+        
+    
+        <div class="carrusel-indicadores">
+            <span class="indicador" [class.active]="currentSlide === 0" (click)="goToSlide(0)"></span>
+            <span class="indicador" [class.active]="currentSlide === 1" (click)="goToSlide(1)"></span>
+            <span class="indicador" [class.active]="currentSlide === 2" (click)="goToSlide(2)"></span>
         </div>
     </div>
-</div>
+</section>
+
+
+<section class="presentacion-section">
+    <div class="presentacion-grid">
+        <div class="presentacion-card card-izquierda">
+            <div class="card-contenido">
+                <h3><i>Cocina napolitana</i></h3>
+                <p>Elaborada en horno de leña, ideal para los amantes de la pasta y la pizza auténtica</p>
+                <div class="card-imagen">
+                    <img src="img/napoles.jpg" alt="cocina napolitana" class="card-imagen-circular">
+                </div>
+            </div>
+        </div>
+
+        <div class="presentacion-card card-derecha">
+            <div class="card-contenido">
+                <h3><i>Con acento gaditano</i></h3>
+                <p>Desde el corazón de Cádiz, con alma andaluza y el mejor ambiente</p>
+                <div class="card-imagen">
+                    <img src="img/cadiz.jpg" alt="Cádiz" class="card-imagen-circular">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="acciones-section">
+    <div class="acciones-grid">
+        <div class="accion-card">
+            <div class="accion-contenido">
+                <h3>Descubre nuestra carta</h3>
+                <p>Platos tradicionales napolitanos con ingredientes frescos y de temporada</p>
+                <div class="accion-footer">
+                    <button (click)="goToCarta()" class="btn-accion">
+                        <strong>Ver carta</strong>
+                    </button>
+                </div>
+            </div>
+            <div class="accion-imagen">
+                <img src="img/pasta.jpg" alt="platos de pasta">
+            </div>
+        </div>
+
+        <div class="accion-card reverse">
+            <div class="accion-imagen">
+                <img src="img/restaurante.jpg" alt="interior restaurante">
+            </div>
+            <div class="accion-contenido">
+                <h3>Reserva tu mesa</h3>
+                <p>Vive una experiencia gastronómica única en un ambiente acogedor y familiar</p>
+                <div class="accion-footer">
+                    <button (click)="goToReserva()" class="btn-accion">
+                        <strong>Reserva</strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="info-section">
+    <div class="info-wrapper">
+        <div class="datos-contacto">
+            <div class="datos-grid">
+                <div class="dato-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="dato-texto">
+                        <h4>Localidad</h4>
+                        <p>Cádiz</p>
+                    </div>
+                </div>
+                <div class="dato-item">
+                    <i class="fas fa-road"></i>
+                    <div class="dato-texto">
+                        <h4>Dirección</h4>
+                        <p>Calle Torre, nº 5</p>
+                    </div>
+                </div>
+                <div class="dato-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="dato-texto">
+                        <h4>Correo</h4>
+                        <p>casanapolitana&#64;rrhh.com</p>
+                    </div>
+                </div>
+                <div class="dato-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="dato-texto">
+                        <h4>Teléfono</h4>
+                        <p>956 22 33 44</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mapa-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3205.8200386011986!2d-6.299244800000011!3d36.534335799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dd160d0747419%3A0xbaeb4d5a3607d3cc!2sC.%20Torre%2C%2011003%20C%C3%A1diz!5e0!3m2!1ses!2ses!4v1765619637149!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</section>

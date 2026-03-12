@@ -9,6 +9,10 @@ main {
     flex: 1;
 }
 
+body {
+    background-color: white;
+}
+
 body.dark main {
     background-color: #252525;
 }
