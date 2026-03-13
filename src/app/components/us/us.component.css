@@ -2,180 +2,320 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out;
 }
+
 
 .titulo {
-    background-color: bisque;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: bisque;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 100%;
-    margin-bottom: 2%;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    position: relative;
 }
 
-h1 {
-    font-size: 3em;
+.titulo h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
-.info_nosotros {
+
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    padding: 0 2rem;
+}
+
+
+
+.familias-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    font-size: 1.2em;
-    width: 90%;
+    gap: 3rem;
+    padding: 0 2rem;
 }
 
-.familia {
-    width: 80%;
-    margin: 0 auto;
-    background: #eca2a2;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 10px 10px;
-    margin-top: 2%;
-    border-radius: 5px;
-}
 
-.info_familia {
+.familia-card {
     display: flex;
-    flex-direction: row;
-    width: 90%;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(139,0,0,0.15);
+    transition: all 0.4s ease;
+    min-height: 500px;
 }
 
-.datos {
-    padding: 30px;
-    font-size: 1em;
-    border: solid 1px #ccc;
-    background-color: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.familia-card.reverse {
+    flex-direction: row-reverse;
 }
 
-.img_datos {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    margin: 0 auto;
-    margin-top: 5%;
+.familia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(139,0,0,0.25);
+}
+
+
+.familia-imagen {
+    flex: 0 0 40%;
+    overflow: hidden;
+    position: relative;
+}
+
+.familia-imagen img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s ease;
 }
 
-.imagen {
-    align-items: center;
-    justify-content: center;
-    margin-top: 2%;
+.familia-card:hover .familia-imagen img {
+    transform: scale(1.1);
 }
 
-.imagenes2 {
+.familia-contenido {
+    flex: 0 0 60%;
+    padding: 2.5rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 30%;
+    flex-direction: column;
+    background: bisque;
+    text-align: left;
+}
+
+.familia-contenido h3 {
+    font-size: 2.5rem;
+    margin: 0 0 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+
+.familia-contenido p {
+    line-height: 1.5;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+
+.familia-footer {
+    display: flex;
     align-items: center;
-    margin-top: 2%;
-    margin-bottom: 3%;
+    gap: 2rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.emblema {
+    width: 50px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.bandera {
+    width: 70px;
+    height: auto;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.emblema:hover, .bandera:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    margin: 4rem 0 3rem 0;
+    padding: 2rem;
+}
+
+.footer-icono {
+    width: 70px;
+    height: auto;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 6px rgba(139,0,0,0.2));
+}
+
+.footer-icono:hover {
+    transform: scale(1.2) rotate(5deg);
 }
 
 .volver {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10%;
+    gap: 2rem;
 }
 
-.btn_inicio {
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
+.volver h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.btn-volver {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
     border: none;
     background-color: rgb(192, 58, 58);
-    border: solid 2px black;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    width: 80%;
-    height: 40px;
-}
-
-.btn_inicio:hover {
-    transform: scale(1.2);
-    transition: 1s ease;
-}
-
-.btn_select {
-    padding: 0px 20px;
-    font-size: 1em;
+    color: white;
     cursor: pointer;
-    border: none;
-    background-color: rgb(192, 58, 58);
-    border: solid 2px black;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    width: 30%;
-    height: 35px;
-    margin-top: 2%;
-    text-align: center; 
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(139,0,0,0.3);
+    min-width: 120px;
 }
 
-.btn_select:hover {
-    transform: scale(1.2);
-    transition: 1s ease;
+.btn-volver:hover {
+    background-color: rgb(126, 40, 40);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139,0,0,0.4);
 }
+
+.btn-volver:active {
+    transform: translateY(0);
+}
+
 
 
 @media (max-width: 1024px) {
+    .titulo h1 {
+        font-size: 2.5rem;
+    }
+    
+    .familia-card,
+    .familia-card.reverse {
+        min-height: 450px;
+    }
+    
+    .familia-contenido {
+        padding: 2rem;
+    }
+    
+    .familia-contenido h3 {
+        font-size: 2rem;
+    }
+}
 
+@media (max-width: 768px) {
     .nosotros {
-        margin-top: 15%;
+        margin-top: 6rem;
     }
-
-    .info_nosotros {
-        width: 90%;
+    
+    .titulo h1 {
+        font-size: 2rem;
     }
-
-    .info_familia {
-        display: flex;
+    
+    .intro-text {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .familia-card,
+    .familia-card.reverse {
         flex-direction: column;
-        margin-bottom: 10%;
+        min-height: auto;
     }
+    
+    .familia-imagen {
+        flex: 0 0 250px;
+        width: 100%;
+    }
+    
+    .familia-contenido {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+    }
+    
+    .familia-contenido h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .familia-emblemas {
+        justify-content: center;
+    }
+    
+    .footer-nav {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 3rem 1rem;
+        padding: 2rem 1rem;
+    }
+    
+    .volver {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-icono {
+        width: 50px;
+    }
+}
 
+@media (max-width: 480px) {
+    .titulo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .familia-imagen {
+        flex: 0 0 200px;
+    }
+    
+    .familia-contenido {
+        padding: 1.5rem;
+        width: 90%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .familia-contenido h3 {
+        font-size: 1.5rem;
+    }
+    
+    .familia-contenido p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .familia-emblemas {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-nav {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
 }
 
 
-@media (max-width: 600px) {
-        
-    .nosotros {
-       margin-top: 80px; 
-       padding-top: 20px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    .info_nosotros {
-        width: 90%;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .familia {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .imagen img {
-        width: 100%;
-        height: 200px;
-    }
-
-    .img_datos {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .img_datos img {
-        width: 50px;
-    }
-
-    .imagenes2 {
-        display: flex;
-        flex-direction: column;
-        margin-top: 5%;
-    }
-
 }

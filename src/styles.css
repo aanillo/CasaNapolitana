@@ -196,3 +196,84 @@ body.dark .btn_form {
     border: solid 2px white;
     background-color: rgb(126, 40, 40);
 }
+
+
+body.dark .bienvenida {
+    background-color: #353434;
+}
+
+body.dark .presentacion-card {
+    background-color: #353434;
+}
+
+body.dark .card-contenido h3 {
+    color: white;
+}
+
+body.dark .card-contenido p {
+    color: white;
+}
+
+body.dark .accion-contenido {
+    background-color: #353434;
+}
+
+body.dark .accion-contenido h3 {
+    color: white;
+}
+
+body.dark .accion-contenido p {
+    color: white;
+}
+
+body.dark .accion-card {
+    background: #353434;
+}
+
+body.dark h1 {
+    color: white;
+}
+
+body.dark h2 {
+    color: white;
+}
+
+body.dark .familia-contenido {
+    background-color: #353434;
+}
+
+body.dark .carta-header {
+    background-color: #353434;
+}
+
+body.dark .plato-info {
+    background-color: #353434;
+}
+
+body.dark .plato-info h4 {
+    color: white;
+}
+
+body.dark .plato-precio {
+    color: white;
+}
+
+body.dark .item-header {
+    background-color: #353434;
+}
+
+body.dark .producto-card {
+    background-color: #353434;
+}
+
+body.dark .caracteristicas {
+    background-color: #353434;
+}
+
+body.dark .producto-info {
+    background-color: #353434;
+}
+
+body.dark .info-section {
+    background-color: #353434;
+}

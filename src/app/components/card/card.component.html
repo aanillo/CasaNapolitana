@@ -1,37 +1,63 @@
 <div class="carta">
-    <div class="titulo">
+    
+    <div class="carta-header">
         <h1>CARTA</h1>
     </div>
 
-    <h2>Elige categoría</h2>
-    <div class="select">
-        <a class="filter" (click)="filterByCategory('entrante')" [class.active]="selectedCategory === 'ENTRANTE'"><strong>Entrante</strong></a>
-        <a class="filter" (click)="filterByCategory('pasta')" [class.active]="selectedCategory === 'PASTA'"><strong>Pasta</strong></a>
-        <a class="filter" (click)="filterByCategory('pizza')" [class.active]="selectedCategory === 'PIZZA'"><strong>Pizza</strong></a>
-        <a class="filter" (click)="filterByCategory('postre')" [class.active]="selectedCategory === 'POSTRE'"><strong>Postre</strong></a>
-    </div>
 
-    <div class="category" *ngIf="selectedCategory">
-        <h2 class="category_title">{{ selectedCategory }}</h2>
-    </div>
+    <div class="carta-content">
+        <h2 class="carta-subtitulo">Elige tu categoría favorita</h2>
+        
+        <div class="filtros-container">
+            <button class="filtro-btn" (click)="filterByCategory('entrante')" [class.active]="selectedCategory === 'ENTRANTE'">
+                Entrantes
+            </button>
+            <button class="filtro-btn" (click)="filterByCategory('pasta')" [class.active]="selectedCategory === 'PASTA'">
+                Pastas
+            </button>
+            <button class="filtro-btn" (click)="filterByCategory('pizza')" [class.active]="selectedCategory === 'PIZZA'">
+                Pizzas
+            </button>
+            <button class="filtro-btn" (click)="filterByCategory('postre')" [class.active]="selectedCategory === 'POSTRE'">
+                Postres
+            </button>
+        </div>
 
-    <div class="food_list">
-        <div *ngFor="let food of filteredFoods" class="food-item">
-            <div class="area_nombre">
-                <h3>{{food.nombre}}</h3>
+       
+        <div class="categoria-seleccionada" *ngIf="selectedCategory">
+            <h3>{{ selectedCategory }}</h3>
+            <span class="categoria-linea"></span>
+        </div>
+
+        
+        <div class="platos-grid">
+            <div *ngFor="let food of filteredFoods" class="plato-card">
+                <div class="plato-imagen">
+                    <img [src]="food.foto" [alt]="food.nombre">
+                    <div class="plato-overlay">
+                        <button (click)="goToItem(food.id)" class="btn-ver-mas">Ver más</button>
+                    </div>
+                </div>
+                <div class="plato-info">
+                    <h4>{{food.nombre}}</h4>
+                    <span class="plato-precio" *ngIf="food.precio">{{food.precio}}</span>
+                </div>
             </div>
-            <img [src]="food.foto" alt="{{food.nombre}}" width="400" height="300">
-            <button (click)="goToItem(food.id)" class="btn_select"><strong>Info</strong></button>
+        </div>
+
+        
+        <div *ngIf="filteredFoods.length === 0" class="sin-resultados">
+            <p>No hay platos disponibles en esta categoría</p>
         </div>
     </div>
 
-    <div class="imagenes2">
-        <img src="img/pizza.png" alt="pasta" width="100">
+    
+    <div class="footer-nav">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
         <div class="volver">
             <h3>Volver:</h3>
-            <button (click)="goToInicio()" class="btn_inicio"><strong>Inicio</strong></button>
+            <button (click)="goToInicio()" class="btn-volver">Inicio</button>
         </div>
-        <img src="img/pizza.png" alt="pasta" width="100">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
     </div>
-
 </div>

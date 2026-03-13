@@ -1,36 +1,74 @@
 <div class="item">
-    <div class="titulo">
+    
+    <div class="item-header">
         <h1>CARTA</h1>
     </div>
 
-    <div class="item-area">
-        <div class="area-titulo">
-            <h2><strong>{{ foodItem?.nombre?.toUpperCase() }}</strong></h2>
-        </div>
-        <div class="area-main">
-            <img [src]="foodItem?.foto" alt="{{ foodItem?.nombre }}" width="600px" height="350px">
+    
+    <div class="item-content">
+        <div class="producto-card">
+            <div class="producto-titulo">
+                <h2>{{ foodItem?.nombre?.toUpperCase() }}</h2>
+                <span class="titulo-linea"></span>
+            </div>
+
             
-            <div class="item-card">
-                <p>{{ foodItem?.descripcion }}</p>
-                <p><strong>Ingredientes: </strong> {{ foodItem?.ingredientes }}</p>
-                <p><strong>Precio: </strong> {{ foodItem?.precio }}</p>
-                <div class="tipos">
-                    <i class="fas fa-pepper-hot" title="Picante" style="color: #e74c3c; font-size: 1.8em; margin-right: 10px;"></i>
-                    <i class="fas fa-cheese" title="Contiene lácteos" style="color: #f1c40f; font-size: 1.8em; margin-right: 10px;"></i>
-                    <i class="fas fa-leaf" title="Opción vegana" style="color: #27ae60; font-size: 1.8em; margin-right: 10px;"></i>
-                    <i class="fas fa-bread-slice" title="Contiene gluten" style="color: #d35400; font-size: 1.8em; margin-right: 10px;"></i>
+            <div class="producto-main">
+                <div class="producto-imagen">
+                    <img [src]="foodItem?.foto" [alt]="foodItem?.nombre">
+                    <div class="imagen-overlay"></div>
+                </div>
+
+                <div class="producto-info">
+                    <div class="info-section">
+                        <h3><i class="fas fa-align-left"></i> Descripción</h3>
+                        <p>{{ foodItem?.descripcion }}</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h3><i class="fas fa-carrot"></i> Ingredientes</h3>
+                        <p>{{ foodItem?.ingredientes }}</p>
+                    </div>
+
+                    <div class="info-section precio-section">
+                        <h3><i class="fas fa-tag"></i> Precio</h3>
+                        <span class="precio-valor">{{ foodItem?.precio }} </span>
+                    </div>
+
+                    <div class="caracteristicas">
+                        <div class="iconos-container">
+                            <div class="icono-item" title="Picante">
+                                <i class="fas fa-pepper-hot"></i>
+                            </div>
+                            <div class="icono-item" title="Contiene lácteos">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <div class="icono-item" title="Opción vegana">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="icono-item" title="Contiene gluten">
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-acciones">
+                        <button (click)="goToCard()" class="btn-volver-carta">
+                            <i class="fas fa-arrow-left"></i>
+                            Volver a la carta
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <button (click)="goToCard()" class="btn-carta">Volver a la carta</button>
     </div>
 
-    <div class="imagenes2">
-        <img src="img/pizza.png" alt="pasta" width="100">
+    <div class="footer-nav">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
         <div class="volver">
             <h3>Volver:</h3>
-            <button (click)="goToInicio()" class="btn_inicio"><strong>Inicio</strong></button>
+            <button (click)="goToInicio()" class="btn-volver">Inicio</button>
         </div>
-        <img src="img/pizza.png" alt="pasta" width="100">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
     </div>
 </div>

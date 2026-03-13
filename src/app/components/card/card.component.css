@@ -1,221 +1,392 @@
 .carta {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+
+.carta-header {
+    background: bisque;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
     text-align: center;
-    justify-content: center; 
-    align-items: center;
-    margin-top: 2%;
 }
 
-.titulo {
-    background-color: bisque;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-bottom: 1%;
+.carta-header h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
-h1 {
-    font-size: 3em;
+
+.carta-content {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
 }
 
-.select {
+.carta-subtitulo {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+
+.filtros-container {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
     justify-content: center;
-    gap: 2%;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
 }
 
-.filter {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
+.filtro-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
     border: none;
-    background-color: rgb(192, 58, 58);
-    border: solid 2px black;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    width: 10%;
+    background: bisque;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 140px;
 }
 
-.filter:hover {
-    transform: scale(1.2);
-    transition: 1s ease;
+.filtro-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139,0,0,0.2);
+    color: #8B0000;
 }
 
-.filter.active {
-    transform: scale(1.1);
-    text-decoration: underline;
-}
-
-.category {
-    margin-top: 1%;
-}
-
-.category_title {
-    text-decoration: underline;
-}
-
-.food_list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px;  
-    width: 90%;  
-}
-
-.food-item {
-    background-color: bisque;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid 1px #ddd;
-    box-shadow: 
-    0 0 10px rgba(0, 0, 0, 0.1), 
-    0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.food-item:hover {
-    transform: scale(1.05);
-    transition: 1s ease;
-}
-
-
-.area_nombre {
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: rgb(126, 40, 40);
+.filtro-btn.active {
+    background: #8B0000;
     color: white;
-    height: 10%;
-    display: flex;
-    justify-content: center;  
-    align-items: center;      
-    text-align: center;
-    margin-bottom: 3%;
+    box-shadow: 0 8px 25px rgba(139,0,0,0.3);
 }
 
-.imagenes2 {
+
+.categoria-seleccionada {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.categoria-seleccionada h3 {
+    font-size: 2.2rem;
+    color: #8B0000;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.categoria-linea {
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #DAA520;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+
+.platos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.plato-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.plato-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(139,0,0,0.2);
+}
+
+
+.plato-imagen {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.plato-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.plato-card:hover .plato-imagen img {
+    transform: scale(1.1);
+}
+
+
+.plato-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(139,0,0,0.7);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 30%;
     align-items: center;
-    margin-top: 2%;
-    margin-bottom: 3%;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.plato-card:hover .plato-overlay {
+    opacity: 1;
+}
+
+.btn-ver-mas {
+    padding: 0.8rem 2rem;
+    background: white;
+    color: #8B0000;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.plato-card:hover .btn-ver-mas {
+    transform: translateY(0);
+}
+
+.btn-ver-mas:hover {
+    background: #DAA520;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+.plato-info {
+    padding: 1.5rem;
+    text-align: center;
+    background: bisque;
+}
+
+.plato-info h4 {
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem;
+}
+
+.plato-info p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.plato-precio {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+}
+
+
+.sin-resultados {
+    text-align: center;
+    padding: 3rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    margin-bottom: 3rem;
+}
+
+.sin-resultados p {
+    font-size: 1.1rem;
+}
+
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    margin: 4rem 0 3rem 0;
+    padding: 2rem;
+}
+
+.footer-icono {
+    width: 70px;
+    height: auto;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 6px rgba(139,0,0,0.2));
+}
+
+.footer-icono:hover {
+    transform: scale(1.2) rotate(5deg);
 }
 
 .volver {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 10%;
+    gap: 2rem;
 }
 
-.btn_inicio {
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
+.volver h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.btn-volver {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
     border: none;
     background-color: rgb(192, 58, 58);
-    border: solid 2px black;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    width: 80%;
-    height: 40px;
-}
-
-.btn_inicio:hover {
-    transform: scale(1.2);
-    transition: 1s ease;
-}
-
-.btn_select {
-    padding: 0px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border: none;
-    background-color: rgb(126, 40, 40);
-    border: solid 1px white;
     color: white;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    width: 30%;
-    height: 35px;
-    margin-top: 2%;
-    text-align: center; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(139,0,0,0.3);
+    min-width: 120px;
 }
 
-.btn_select:hover {
-    transform: scale(1.2);
-    transition: 1s ease;
+.btn-volver:hover {
+    background-color: rgb(126, 40, 40);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139,0,0,0.4);
 }
+
+.btn-volver:active {
+    transform: translateY(0);
+}
+
 
 
 @media (max-width: 1024px) {
-
-    .carta {
-        margin-top: 15%;
-    }
-
-    .food_list {
-        display: grid;
+    .platos-grid {
         grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        width: 90%;
+        gap: 1.5rem;
     }
+    
+    .carta-header h1 {
+        font-size: 2.8rem;
+    }
+    
+    .carta-subtitulo {
+        font-size: 1.5rem;
+    }
+}
 
+@media (max-width: 768px) {
+    .carta {
+        margin-top: 6rem;
+    }
+    
+    .carta-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .carta-subtitulo {
+        font-size: 1.3rem;
+    }
+    
+    .filtros-container {
+        gap: 1rem;
+    }
+    
+    .filtro-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        min-width: 120px;
+    }
+    
+    .categoria-seleccionada h3 {
+        font-size: 1.8rem;
+    }
+    
+    .platos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .footer-nav {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 3rem 1rem;
+        padding: 2rem 1rem;
+    }
+    
+    .volver {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .footer-icono {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carta-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .carta-subtitulo {
+        font-size: 1.1rem;
+    }
+    
+    .filtros-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filtro-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .categoria-seleccionada h3 {
+        font-size: 1.5rem;
+    }
+    
+    .plato-imagen {
+        height: 200px;
+    }
+    
+    .btn-nav {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
 }
 
 
-@media (max-width: 600px) {
-        
-    .carta {
-        margin-top: 80px; 
-        padding-top: 20px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    .select {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 0;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        margin: 0 auto;
-        text-align: center;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .select a {
-        width: 100%;
-        margin: 0;
-        padding: 10px 0;
-        box-sizing: border-box;
-        text-align: center;
-        display: block;
-    }
-
-    .food_list {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        width: 90%;
-    }
-
-    .food_list img {
-        width: 90%;
-        max-width: 300px;
-        height: 250px;
-        margin: 10px auto;
-    }
-
-    .imagenes2 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 5%;
-    }
-
 }
