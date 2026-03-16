@@ -1,80 +1,148 @@
-<div class="book">
-    <div class="titulo">
+<div class="book-container">
+    
+    <div class="book-header">
         <h1>RESERVA</h1>
     </div>
 
-    <p>En <i><strong>la casa napolitana</strong></i> podrás disfrutar de una gran variedad de pizzas italianas, pasta entrantes y los mejores postres desde el corazón del centro de Cádiz.<br>
-    Nos encontrarás en calle Torre, número 5 - Cádiz<br>
-    Abierto de miércoles a domingo, de 13:00 a 17:30 y de 20:00 a 00:30</p>
-
-     <div class="book_menu">
-        <div class="book_calendar">
-            <app-calendar (dateSelected)="onDateSelected($event)"></app-calendar>
+   
+    <div class="book-intro">
+        <p>En <strong>La Casa Napolitana</strong> podrás disfrutar de una gran variedad de pizzas italianas, pasta, entrantes y los mejores postres desde el corazón del centro de Cádiz.</p>
+        <div class="info-destacada">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Calle Torre, nº 5 - Cádiz</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>Miércoles a domingo: 13:00 - 17:30 | 20:00 - 00:30</span>
+            </div>
         </div>
+    </div>
 
-        <div class="book_data">
-            <form (ngSubmit)="confirmarReserva()" #reservaForm="ngForm">
-                <div class="form_data">
-                    <div class="element">
-                        <label for="personas">Personas:</label>
-                        <select id="personas" [(ngModel)]="selectedPeople" name="personas">
-                            <option class="text" value="Personas" disabled selected>Selecciona el número de personas</option>
-                           <option *ngFor="let count of peopleOptions" [value]="count" required>
-                                {{ count }} {{ count > 1 ? 'Personas' : 'Persona'}}
-                           </option>
-                        </select>
+    
+    <div class="reserva-card">
+        <div class="reserva-grid">
+
+            <div class="calendario-wrapper">
+                <div class="calendario-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Selecciona fecha</h3>
+                </div>
+                <div class="calendario-contenido">
+                    <app-calendar (dateSelected)="onDateSelected($event)"></app-calendar>
+                </div>
+            </div>
+
+            
+            <div class="formulario-wrapper">
+                <div class="formulario-header">
+                    <i class="fas fa-pen"></i>
+                    <h3>Completa tus datos</h3>
+                </div>
+                
+                <form (ngSubmit)="confirmarReserva()" #reservaForm="ngForm" class="reserva-form">
+                    
+                    <div class="form-fila">
+                        <div class="form-grupo">
+                            <label for="personas">
+                                <i class="fas fa-users"></i>
+                                Personas
+                            </label>
+                            <select id="personas" [(ngModel)]="selectedPeople" name="personas" required class="form-select">
+                                <option value="Personas" disabled selected>Número de personas</option>
+                                <option *ngFor="let count of peopleOptions" [value]="count">
+                                    {{ count }} {{ count > 1 ? 'personas' : 'persona' }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-grupo">
+                            <label for="time">
+                                <i class="fas fa-clock"></i>
+                                Hora
+                            </label>
+                            <select id="time" [(ngModel)]="selectedTime" name="time" required class="form-select">
+                                <option value="Hora" disabled selected>Selecciona hora</option>
+                                <option *ngFor="let time of timeOptions" [value]="time" [disabled]="isTimeUnavailable(time)">
+                                    {{ time }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="element">
-                        <label for="time">Hora:</label>
-                        <select id="time" [(ngModel)]="selectedTime" name="personas">
-                            <option class="text" value="Hora" disabled selected>Selecciona una hora</option>
-                            <option *ngFor="let time of timeOptions" [value]="time" [disabled]="isTimeUnavailable(time)" required>
-                                {{ time }}
+
+                    
+                    <div class="form-grupo">
+                        <label for="zona">
+                            <i class="fas fa-chair"></i>
+                            Zona
+                        </label>
+                        <select id="zona" [(ngModel)]="selectedZone" name="zona" required class="form-select">
+                            <option value="Zona" disabled selected>Selecciona una zona</option>
+                            <option *ngFor="let zone of zoneOptions" [value]="zone">
+                                {{ zone }}
                             </option>
                         </select>
                     </div>
-                    </div>
-                    <div class="element">
-                        <label for="zona">Zona:</label>
-                        <select id="zona" [(ngModel)]="selectedZone" name="personas">
-                            <option class="text" value="Zona" disabled selected>Selecciona una zona</option>
-                           <option *ngFor="let zone of zoneOptions" [value]="zone" required>
-                                {{ zone }} 
-                           </option>
-                        </select>
-                    </div>
-                    <div class="element" style="margin-top: 3%;">
-                        <label for="email">Email:</label>
-                        <input id="email" name="email" placeholder="Introduzca su email" [(ngModel)]="email" 
-                        required 
-                        [pattern]="'^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'" 
-                        #emailInput="ngModel">
+
+                    
+                    <div class="form-grupo">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="tucorreo@ejemplo.com" 
+                            [(ngModel)]="email" 
+                            required
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            #emailInput="ngModel"
+                            class="form-input">
                         
-                        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-                            <p>Por favor ingrese un email válido.</p>
+                        <div *ngIf="emailInput.invalid && emailInput.touched" class="error-mensaje">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Por favor ingresa un email válido
                         </div>
                     </div>
-                    <div class="element">
-                        <p class="text_info">Si desea reservar una mesa para 10 personas o más, llame a <strong>956223344</strong></p>
+
+                    <div class="info-adicional">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>Para grupos de 10 o más personas, llámanos al <strong>956 22 33 44</strong></p>
                     </div>
-                    <button class="btn_form" type="submit"><strong>RESERVAR</strong></button>
-            </form>
+
+                    <button type="submit" class="btn-reservar" [disabled]="reservaForm.invalid">
+                        <i class="fas fa-check-circle"></i>
+                        Confirmar reserva
+                    </button>
+                </form>
+            </div>
         </div>
-     </div>
+    </div>
 
-     <div class="imagenes">
-        <img src="img/pizza2.jpg" alt="pasta" width="350" height="250">
-        <img src="img/azotea.jpg" alt="pasta" width="450" height="300">
-        <img src="img/brindis.jpg" alt="pasta" width="350" height="250">
-     </div>
-     
+    
+    <div class="galeria-container">
+        <div class="galeria-grid">
+            <div class="galeria-item">
+                <img src="img/pizza2.jpg" alt="Pizza napolitana">
+            </div>
+            <div class="galeria-item destacado">
+                <img src="img/azotea.jpg" alt="Terraza">
+            </div>
+            <div class="galeria-item">
+                <img src="img/brindis.jpg" alt="Brindis">
+            </div>
+        </div>
+    </div>
 
-     <div class="imagenes2">
-        <img src="img/pizza.png" alt="pasta" width="100">
+
+    <div class="footer-nav">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
         <div class="volver">
             <h3>Volver:</h3>
-            <button (click)="goToInicio()" class="btn_inicio"><strong>Inicio</strong></button>
+            <button (click)="goToInicio()" class="btn-volver">Inicio</button>
         </div>
-        <img src="img/pizza.png" alt="pasta" width="100">
-     </div>
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
+    </div>
 </div>

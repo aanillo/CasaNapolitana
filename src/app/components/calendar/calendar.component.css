@@ -46,6 +46,7 @@
 
   .calendar-day {
     cursor: pointer;
+    color: black !important;
   }
 
 
@@ -54,9 +55,9 @@
   }
 
   .calendar-day.disabled {
-    color: #aaa;
+    color: #4e4e4e;
     pointer-events: none;
-    background-color: #f3f3f3;
+    background-color: #cbcbcb;
     cursor: not-allowed;
   }
 

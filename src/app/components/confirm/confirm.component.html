@@ -1,33 +1,56 @@
-<div class="confirm">
-    <div class="titulo">
+<div class="confirm-container">
+    
+    <div class="confirm-header">
         <h1>RESERVA</h1>
     </div>
 
-    <div *ngIf="data">
-        <h1>¡Reserva confirmada con éxito!</h1>
-        <div class="div-datosReserva">
-            <h2>Datos de la reserva</h2>
-            <div class="datosReserva">
-                <p><strong>Email:</strong> {{ data.email }}</p>
-                <p><strong>Fecha seleccionada:</strong> {{ data.date }}</p>
-                <p><strong>Personas:</strong> {{ data.people }}</p>
-                <p><strong>Hora:</strong> {{ data.time }}</p>
-                <p><strong>Zona:</strong> {{ data.zone }}</p>
+    <div *ngIf="data" class="confirm-content">
+        <h2 class="success-title">¡Reserva confirmada con éxito!</h2>
+        
+        <div class="reserva-card-confirm">
+            <h3>Datos de la reserva</h3>
+            <div class="reserva-datos-grid">
+                <div class="dato-item-confirm">
+                    <span class="dato-label">Email:</span>
+                    <span class="dato-valor">{{ data.email }}</span>
+                </div>
+                <div class="dato-item-confirm">
+                    <span class="dato-label">Fecha:</span>
+                    <span class="dato-valor">{{ data.date }}</span>
+                </div>
+                <div class="dato-item-confirm">
+                    <span class="dato-label">Personas:</span>
+                    <span class="dato-valor">{{ data.people }}</span>
+                </div>
+                <div class="dato-item-confirm">
+                    <span class="dato-label">Hora:</span>
+                    <span class="dato-valor">{{ data.time }}</span>
+                </div>
+                <div class="dato-item-confirm">
+                    <span class="dato-label">Zona:</span>
+                    <span class="dato-valor">{{ data.zone }}</span>
+                </div>
             </div>
         </div>
-        <div class="p-contacto">
-            <p>Si existen errores en los datos, contacte con <strong>casanapolitana&#64;rrhh.com</strong> o llame al número <strong>956223344</strong></p>
+
+        <div class="contacto-mensaje">
+            <i class="fas fa-info-circle"></i>
+            <p>Si existen errores en los datos, contacta con <strong>casanapolitana&#64;rrhh.com</strong> o llámanos al <strong>956 22 33 44</strong></p>
         </div>
-        <h1>Le esperamos con muchas ganas</h1>
-      
-        <div class="imagenes2">
-            <img src="img/pizza.png" alt="pasta" width="100">
-            <div class="volver">
-                <h3>Volver:</h3>
-                <button (click)="goToInicio()" class="btn_inicio"><strong>Inicio</strong></button>
-            </div>
-            <img src="img/pizza.png" alt="pasta" width="100">
-         </div>
-      </div>
-    
+
+        <div class="despedida">
+            <i class="fas fa-heart"></i>
+            <h3>¡Te esperamos con muchas ganas!</h3>
+            <i class="fas fa-heart"></i>
+        </div>
+
+        <div class="footer-nav">
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
+        <div class="volver">
+            <h3>Volver:</h3>
+            <button (click)="goToInicio()" class="btn-volver">Inicio</button>
+        </div>
+        <img src="img/pizza.png" alt="pizza icono" class="footer-icono">
+    </div>
+    </div>
 </div>

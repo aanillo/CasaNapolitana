@@ -277,3 +277,51 @@ body.dark .producto-info {
 body.dark .info-section {
     background-color: #353434;
 }
+
+body.dark .book-header {
+    background-color: #353434;
+}
+
+body.dark .info-item span {
+    color: white;
+}
+
+body.dark .reserva-card {
+    background-color: #252525;
+}
+
+
+body.dark .calendario-wrapper {
+    background-color: #e7e7e7;
+}
+
+
+body.dark .formulario-wrapper {
+    background-color: #e7e7e7;
+}
+
+
+body.dark .calendar-day.disabled {
+    background-color: #6e6e6e;
+}
+
+body.dark .precio-valor {
+    background-color: #252525;
+    color: white;
+}
+
+body.dark .confirm-header {
+    background-color: #353434;
+}
+
+body.dark .dato-item-confirm {
+    background-color: #353434;
+}
+
+body.dark .dato-label {
+    color: white;
+}
+
+body.dark .dato-valor {
+    color: white;
+}
